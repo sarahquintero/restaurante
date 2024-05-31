@@ -16,8 +16,8 @@ import logica.Restaurante;
 public class Presentacion {
 
 	public static void main(String[] args) {
-	 boolean bandera = false;
-	 List<Cliente> clientes = new LinkedList<>();
+		boolean bandera = false;
+		List<Cliente> clientes = new LinkedList<>();
 		List<Comida> productos = new LinkedList<>();
 		int opcion1;
 		int opcion2;
