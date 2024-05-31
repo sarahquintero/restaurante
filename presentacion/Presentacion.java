@@ -1,5 +1,8 @@
 package presentacion;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.LinkedList;
@@ -174,6 +177,7 @@ public class Presentacion {
 											if (cliente.getProductosComprados().isEmpty()) {
 												System.out.println("Compra realizada:");
 												tienda.realizarCompra();
+												escribirListaComidaEnArchivo(productos, "comidas.txt");
 												System.out.println(pedido.mostrarCarrito());
 												System.out.println("Total: " + pedido.calcularCostoTotal());
 											} else {
@@ -266,5 +270,16 @@ public class Presentacion {
 		return true;
 
 	}
+	public static void escribirListaComidaEnArchivo(List<Comida> lista, String nombreArchivo) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(nombreArchivo))) {
+            for (Comida comida : lista) {
+                writer.write(comida.toString());
+                writer.newLine();
+            }
+            System.out.println("Información agregada correctamente: " + nombreArchivo);
+        } catch (IOException e) {
+            System.err.println("Error al escribir en el archivo " + nombreArchivo + ": " + e.getMessage());
+        }
+    }
 
 }
